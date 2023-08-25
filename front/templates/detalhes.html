@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/detalhes.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <div class="row">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <template v-for="(imagem, index) in imagens">
+                        <template v-if="index==0">
+                            <div class="carousel-item active">
+                                <img class="d-block w-25 img-fluid mx-auto my-auto d-block" :src="imagem.image" alt="First slide">
+                              </div>
+                        </template>
+                        <template v-else>
+                            <div class="carousel-item">
+                                <img class="d-block w-25 img-fluid mx-auto my-auto d-block" :src="imagem.image" alt="First slide">
+                            </div>
+                        </template>
+                    </template>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+              </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <h5 class="card-header">[[titulo]]</h5>
+                <div class="card-body">
+                    <div class="row">
+                            <h5 class="card-title">Fabricante: [[fabricante]]</h5>
+                            <p class="card-text">Disponivel: [[disponivel]] </p>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4 class="text-dark mb-0">R$ [[(Math.round(preco * 100) / 100).toFixed(2)]]</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-purple" type="button" v-on:click="adicionarCarrinho(idProduto, disponivel)" >Adicionar ao Carrinho</button>
+                                </div>
+                            </div>
+                    </div>
+
+
+                </div>
+              </div>
+        </div>
+
+
+        
+        
+
+        <div class="row bottom-bar fixed-bottom">
+            <div class="col-4 nopadding">
+                <a href="/"> <p class="text-center">Pagina Inicial</p> </a>
+            </div>
+            <div class="col-4 nopadding">
+                <a href="#"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
+            </div>
+            <div class="col-4 nopadding">
+                <a href="#"> <p class="text-center">Conta</p> </a>
+            </div>
+        </div>
+
+
+</body>
+<script src="{% static 'front/js/detalhes.js' %}"></script>
+
+{% endblock %}

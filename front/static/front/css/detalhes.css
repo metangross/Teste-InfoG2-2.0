@@ -1,0 +1,36 @@
+.btn-purple{
+    border-color: black;
+}
+  .btn-purple:hover{
+    background-color: rgb(74, 48, 65);
+    color: white;
+  }
+
+
+
+.bottom-bar{
+    background-color: white;
+    overflow: hidden;
+    /*position: fixed; */
+    margin-left: 0;
+    width: 100%;
+}
+
+.bottom-bar a:hover {
+    background-color: rgb(240, 149, 210);
+    color: white;
+  }
+
+.bottom-bar a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }

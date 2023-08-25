@@ -2,6 +2,7 @@
     border-radius: 20% !important;
 }
 .card {
+  margin-top: 15px !important;
   background-color: white !important;
 }
 .btn-purple{

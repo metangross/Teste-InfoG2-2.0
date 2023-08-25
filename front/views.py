@@ -8,3 +8,6 @@ def index(request):
 def loja(request):
     return render(request, "loja.html")
 
+
+def detalhes(request):
+    return render(request, "detalhes.html")
