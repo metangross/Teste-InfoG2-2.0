@@ -46,7 +46,7 @@
                                       </div>
                                       <div class="d-flex justify-content-between mb-2">
                                         <button class="btn btn-purple" type="button" v-on:click="detalheProduto(produto.id)" >Ver Detalhes</button>
-                                        <button class="btn btn-purple" type="button" v-on:click="adicionarCarrinho(produto.id, produto.available)" >Adicionar ao Carrinho</button>
+                                        <button class="btn btn-purple" type="button" v-on:click="adicionarCarrinho(produto.id, produto.available, produto.stocks[0].unit_price, produto.short_description, produto.images[0].image)" >Adicionar ao Carrinho</button>
                                       </div>
                                     </div>
                                   </div>
@@ -67,7 +67,7 @@
                 <a href="/"> <p class="text-center">Pagina Inicial</p> </a>
             </div>
             <div class="col-4 nopadding">
-                <a href="#"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
+                <a href="/carrinho"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
             </div>
             <div class="col-4 nopadding">
                 <a href="#"> <p class="text-center">Conta</p> </a>

@@ -11,3 +11,6 @@ def loja(request):
 
 def detalhes(request):
     return render(request, "detalhes.html")
+
+def carrinho(request):
+    return render(request, "carrinho.html")
