@@ -1,4 +1,6 @@
-
+Vue.component("modal", {
+    template: "#modal-template"
+  });
 
 var v = new Vue({
     el: "#index",
@@ -14,12 +16,18 @@ var v = new Vue({
         bairro:null,
         numero:null,
         complemento:null,
+        pedidos:null,
+        showModal:false,
+        modal: {
+            pedido_id:null,
+            items:null,
+        }
     },
     delimiters: ["[[","]]"],
     created(){
         this.logado = localStorage.getItem("logado")? true : false
         this.listaCarrinho = localStorage.getItem("ListaCarrinho")? localStorage.getItem("ListaCarrinho") : []
-
+        console.log(this.listaCarrinho)
         if(this.logado){
             this.id = localStorage.getItem("id")
             this.nome = localStorage.getItem("nome_logado")
@@ -36,6 +44,14 @@ var v = new Vue({
             v.numero = dados.number
             v.complemento = dados.complement
         })
+        url = "http://165.227.177.3:8001/pedidos/?consumer__id=" + this.id
+        console.log(url)
+        $.get(url, function(data, status){
+            v.pedidos = data
+            console.log(v.pedidos)
+        })
+        
+
 
     },
     methods: {
@@ -44,6 +60,31 @@ var v = new Vue({
         },
         logarConta(){
             window.location.href = "/login"
+        },
+        converteStatus(status){
+            const STATUS = {
+                0:"ABERTO",
+                1:"EM ANÁLISE",
+                2:"CONFIRMADO",
+                3:"ENVIADO",
+                4:"CANCELADO",
+                5:"NEGADO",
+                6:"TERMINADO",
+                7:"PAGAMENTO PENDENTE"
+            }
+            return STATUS[status]
+        },
+        exibirDetalhes(pedido_id){
+            this.modal["pedido_id"] = pedido_id
+            for(let i =0; i<v.pedidos.length; i++){
+                if(pedido_id == v.pedidos[i].id){
+                    this.modal["items"] = v.pedidos[i].items
+                }
+            }
+            $("#exampleModal").modal("show") 
+        },
+        fecharModal(){
+            $("#exampleModal").modal("hide") 
         }
     }
 })

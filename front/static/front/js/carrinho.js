@@ -46,17 +46,18 @@ var v = new Vue({
         },
         removeCarrinho(productId){
           if(confirm("Você realmente deseja remover esse produto do carrinho?")){
+            console.log(productId)
             console.log(this.listaCarrinho)
-            for( var i = 0; i < this.listaCarrinho.length; i++){ 
-    
-              if ( this.listaCarrinho[i] === productId) { 
-          
-                this.listaCarrinho.splice(i, 1); 
-              }
+            this.listaCarrinho = this.listaCarrinho.filter(x => x !== parseInt(productId))
+            // var newList = []
+            // for(let i=0; i<this.listaCarrinho.length; i++){
+            //   if(this.listaCarrinho[i]!==parseInt(productId)){
+            //     newList.push(this.listaCarrinho[i])
+            //   }
+            // }
             console.log(this.listaCarrinho)
             localStorage.setItem("ListaCarrinho",this.listaCarrinho)
 
-          }
           }
           else{
             console.log("no")

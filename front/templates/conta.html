@@ -82,6 +82,70 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="card main ">
+                    <h3 class="card-header">Meus Pedidos</h4>
+                </div>
+            </div>
+            <div class="row mgbt">
+                <div class="card main" v-for="pedido in pedidos">
+                    <h4 class="card-header">Pedido #[[pedido.id]]</h4>
+                    <div class="row ">
+                        <div class="col-md-10 my-auto">
+                            <div class="row info">
+                                <h5>Valor Total: R$[[pedido.total_price]]</h5>
+                            </div>
+                            <div class="row info">
+                                <h5>Status do Pedido: [[converteStatus(pedido.status)]]</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-purple main" type="button" v-on:click="exibirDetalhes(pedido.id)" >Exibir Detalhes</button>
+                </div>
+                
+
+                  
+                  <!-- Modal -->
+                  <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Pedido [[modal.pedido_id]]</h5>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-8">
+                                <p>Item</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Quantidade</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Preço</p>
+                            </div>
+                          </div>
+                          <template v-for="item in modal.items">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>[[item.description]]</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>[[item.quantity]]</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>R$[[(parseFloat(item.unit_price)*item.quantity).toFixed(2)]]</p>
+                                </div>
+                            </div>
+
+                          </template>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="fecharModal()">Fechar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
 
             <div class="row bottom-bar fixed-bottom">
                 <div class="col-4 nopadding">
@@ -100,7 +164,7 @@
                     <h2>Bem vindo! Acesse sua conta ou cadastre-se!</h2>
                     <h5>Para proceder com o checkout, escolha uma das opções abaixo</h5>
             </div>
-           
+
             <div class="row buttonrow">
                 <button class="btn btn-black" type="button" v-on:click="logarConta()" >Acessar Conta</button>
                 <button class="btn btn-black" type="button" v-on:click="novaConta()" >Criar Conta Nova</button>
@@ -112,6 +176,6 @@
 
 
 </body>
+<script src="{% static 'front/js/base/bootstrap.js' %}"></script>
 <script src="{% static 'front/js/conta.js' %}"></script>
-
 {% endblock %}

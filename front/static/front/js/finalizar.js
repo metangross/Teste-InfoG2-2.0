@@ -82,6 +82,22 @@ var v = new Vue({
             "delivery":this.delivery? true: false
           }
           console.log(dados)
+          url="http://165.227.177.3:8001/pedidos/"
+          $.ajax({
+            type: 'POST',
+            url: url,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(dados),
+        }).done(function(data){
+            console.log(data)
+            alert("Pedido feito com sucesso!")
+            window.location.href = "/conta"
+        }).fail(function(xhr, status, error){
+            console.log(xhr.responseText)
+            console.log(status)
+            console.log(error)
+        })
         },
         countOccurrences(arr) {
             const occurrences = {};
