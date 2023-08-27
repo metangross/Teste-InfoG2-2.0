@@ -9,8 +9,8 @@ var v = new Vue({
         passo_1:true,
         passo_2:false,
         passo_3:false,
-        selected:null,
-        radio:null,
+        radio:"1",
+        radio_pagamento:"0"
     },
     delimiters: ["[[","]]"],
     created(){
@@ -40,11 +40,12 @@ var v = new Vue({
         novaConta(){
             window.location.href = "/novaconta"
         },
-        continuar(etapa){
-            if(etapa==1){
-                v.passo_1=false
-                v.passo_2=true
-            }
+        continuar(){
+            localStorage.setItem("delivery", this.radio)
+            localStorage.setItem("payment", this.radio_pagamento)
+            console.log(this.radio)
+            console.log(this.radio_pagamento)
+            window.location.href = "/finalizar"
         }
     }
 })

@@ -6,7 +6,7 @@ var v = new Vue({
         logado:null,
         id:null,
         nome:null,
-        listaCarrinho:null,
+        listaCarrinho:[],
         cep:null,
         cidade:null,
         uf:null,
@@ -18,7 +18,7 @@ var v = new Vue({
     delimiters: ["[[","]]"],
     created(){
         this.logado = localStorage.getItem("logado")? true : false
-        this.listaCarrinho = localStorage.getItem("ListaCarrinho")
+        this.listaCarrinho = localStorage.getItem("ListaCarrinho")? localStorage.getItem("ListaCarrinho") : []
 
         if(this.logado){
             this.id = localStorage.getItem("id")
@@ -41,6 +41,9 @@ var v = new Vue({
     methods: {
         novaConta(){
             window.location.href = "/novaconta"
+        },
+        logarConta(){
+            window.location.href = "/login"
         }
     }
 })

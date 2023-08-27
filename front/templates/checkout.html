@@ -11,25 +11,52 @@
             <div class="card main">
                 <h1 class="card-header">Checkout</h5>
             </div>
-            <template v-if="passo_1">
-                <div class="card">
-                    <h4 class="card-header">Onde você quer receber?</h4>
-                    <div class="form-check entrada mg-top">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="radio">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Retirar na Loja
-                        </label>
-                    </div>
-                      <div class="form-check entrada">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" v-model="radio" checked>
-                        <label class="form-check-label" for="flexRadioDefault2" id="label2">
-                        </label>
-                      </div>
-                      <div class="row">
-                        <button class="btn btn-purple" type="button"  v-on:click="continuar(1)">Continuar</button>
-                    </div>
+            <div class="card">
+                <h4 class="card-header">Onde você quer receber?</h4>
+                <div class="form-check entrada mg-top">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="radio" value="0">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Retirar na Loja
+                    </label>
                 </div>
-            </template>
+                    <div class="form-check entrada">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" v-model="radio" value="1">
+                    <label class="form-check-label" for="flexRadioDefault2" id="label2">
+                    </label>
+                    </div>
+                    <div class="row">
+                </div>
+            </div>
+            <div class="card">
+                <h4 class="card-header">Selecione a forma de Pagamento</h4>
+                <div class="form-check entrada mg-top">
+                    <input class="form-check-input" type="radio" name="radio_pagamento" id="radio_pagamento1" v-model="radio_pagamento" value="0">
+                    <label class="form-check-label" for="radio_pagamento1">
+                        Cartão de Débito
+                    </label>
+                </div>
+                <div class="form-check entrada ">
+                    <input class="form-check-input" type="radio" name="radio_pagamento" id="radio_pagamento2" v-model="radio_pagamento" value="1">
+                    <label class="form-check-label" for="radio_pagamento2">
+                        Cartão de Crédito
+                    </label>
+                </div>
+                <div class="form-check entrada ">
+                    <input class="form-check-input" type="radio" name="radio_pagamento" id="radio_pagamento3" v-model="radio_pagamento" value="3">
+                    <label class="form-check-label" for="radio_pagamento3">
+                        Pix
+                    </label>
+                </div>
+                <div class="form-check entrada ">
+                    <input class="form-check-input" type="radio" name="radio_pagamento" id="radio_pagamento4" v-model="radio_pagamento" value="2">
+                    <label class="form-check-label" for="radio_pagamento4">
+                        Dinheiro
+                    </label>
+                </div>
+            </div>
+                    
+            <button class="btn btn-checkout" type="button" v-on:click="continuar()">Continuar</button>
+
         </div>
 
 

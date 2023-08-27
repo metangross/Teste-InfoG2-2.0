@@ -21,5 +21,11 @@ def conta(request):
 def novaconta(request):
     return render(request, "novaconta.html")
 
+def login(request):
+    return render(request, "login.html")
+
 def checkout(request):
     return render(request, "checkout.html")
+
+def finalizar(request):
+    return render(request, "finalizar.html")

@@ -89,6 +89,7 @@ var v = new Vue({
                 localStorage.setItem("logado",true)
                 localStorage.setItem("id", data.id)
                 localStorage.setItem("nome_logado", data.name)
+                localStorage.setItem("telefone", data.phone)
                 window.location.href = "/conta"
             }).fail(function(xhr, status, error){
                 var error = JSON.parse(xhr.responseText).consumer

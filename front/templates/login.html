@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/login.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <div class="row">
+            <div class="card main">
+                <h2 class="card-header">Acessar Conta</h5>
+                <div class="card-body">
+                    <form v-on:submit.prevent="continuar()">
+                        <div class="row entrada">
+                            <div class="col-md-1">
+                                <p>Telefone</p>
+                            </div>
+                            <div class="col-md-11">
+                                <input class="form-control" id="tele" name="fone" required>
+                            </div>
+                        </div>
+                        <div class="row entrada">
+                            <div class="col-md-1">
+                                <p>Senha</p>
+                            </div>
+                            <div class="col-md-11">
+                                <input class="form-control" type="password" v-model="senha" minlength="8" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-purple" type="button"  v-on:click="logar()">Continuar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+
+</body>
+<script src="{% static 'front/js/login.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+{% endblock %}

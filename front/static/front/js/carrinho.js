@@ -21,7 +21,8 @@ var v = new Vue({
         console.log(this.listaCarrinho)
         console.log(this.InfoProdutos)
         console.log(this.itens)
-        var itensStr = Object.keys(this.itens).toString()
+        //var itensStr = Object.keys(this.itens).toString()
+
         // console.log(this.idProduto)
         // $.get("http://165.227.177.3:8001/produtos/?ids=" + itensStr, function(data, status){
         //     this.produtos = data
@@ -68,8 +69,26 @@ var v = new Vue({
           window.location.href = "/loja\/produto\/?id=" + produto
         },
         checkout(produto){
-          window.location.href = "/checkout"
-      }
+          logado = localStorage.getItem("logado")? true : false
+          if(logado)
+            window.location.href = "/checkout"
+          else
+            window.location.href = "/conta"
+
+        },
+        calcularValorTotal(){
+          var valor_total = 0
+          let lista = Object.keys(this.itens)
+          for(let i=0; i<lista.length; i++){
+            for(let j=0; j<this.InfoProdutos.length; j++){
+              if(lista[i]==this.InfoProdutos[j].id){
+                valor_total += this.itens[lista[i]]*this.InfoProdutos[j].preco
+              }
+            }
+            console.log(lista[i], this.itens[lista[i]])
+          }
+          return valor_total.toFixed(2)
+        }
     }
 })
 

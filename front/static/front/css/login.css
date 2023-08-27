@@ -1,3 +1,6 @@
+.entrada {
+    margin-bottom: 15px;
+}
 .btn-purple{
     border-color: black;
     margin-top: 15px;
@@ -7,15 +10,7 @@
     color: white;
   }
 
-.entrada {
+  .main {
     margin-bottom: 15px;
-}
-
-.endereco {
-    margin-top:25px
-}
-
-.main {
-  margin-bottom: 15px;
-  margin-top: 15px;
+    margin-top: 15px;
 }
