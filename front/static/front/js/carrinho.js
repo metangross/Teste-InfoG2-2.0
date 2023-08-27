@@ -66,6 +66,9 @@ var v = new Vue({
         },
         detalheProduto(produto){
           window.location.href = "/loja\/produto\/?id=" + produto
+        },
+        checkout(produto){
+          window.location.href = "/checkout"
       }
     }
 })

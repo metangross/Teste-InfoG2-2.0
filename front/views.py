@@ -14,3 +14,12 @@ def detalhes(request):
 
 def carrinho(request):
     return render(request, "carrinho.html")
+
+def conta(request):
+    return render(request, "conta.html")
+
+def novaconta(request):
+    return render(request, "novaconta.html")
+
+def checkout(request):
+    return render(request, "checkout.html")

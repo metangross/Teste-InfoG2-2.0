@@ -75,7 +75,6 @@ var v = new Vue({
                 url = "http://165.227.177.3:8001/categorias/" + this.nome_loja + "/"
                 
             }
-            console.log(url)
             $.get(url , function(data, status){
                     v.categorias = data
                     console.log(v.categorias)

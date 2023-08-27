@@ -34,7 +34,7 @@
                         
                     </div>
                 </div>
-                <button class="btn btn-checkout" type="button" v-on:click="adicionarCarrinho(produto.id, produto.available, produto.stocks[0].unit_price, produto.short_description, produto.images[0].image)" >Prosseguir ao Checkout</button>
+                <button class="btn btn-checkout" type="button" v-on:click="checkout()">Prosseguir ao Checkout</button>
               </template>
         </div>
 
@@ -51,7 +51,7 @@
                 <a href="#"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
             </div>
             <div class="col-4 nopadding">
-                <a href="#"> <p class="text-center">Conta</p> </a>
+                <a href="/conta"> <p class="text-center">Conta</p> </a>
             </div>
         </div>
 

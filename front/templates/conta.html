@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/conta.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <template v-if="logado">
+            <div class="row">
+                <div class="card main">
+                    <h1 class="card-header">Bem vindo de volta [[nome]]!</h5>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <h3 class="card-header">Endereço</h4>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>CEP</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p>[[cep]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Cidade</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[cidade]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>UF</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[uf]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Rua</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[rua]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Bairro</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p>[[bairro]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Número</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[numero]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Complemento</h5>
+                        </div>
+                        <template v-if="complemento">
+                            <div class="col-md-10 border rounded">
+                                <p class="endereco">[[complemento]]</p>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="col-md-10 border rounded">
+                                <p class="endereco" >Nenhum complemento</p>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row bottom-bar fixed-bottom">
+                <div class="col-4 nopadding">
+                    <a href="/"> <p class="text-center">Pagina Inicial</p> </a>
+                </div>
+                <div class="col-4 nopadding">
+                    <a href="/carrinho"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
+                </div>
+                <div class="col-4 nopadding active">
+                    <a href="/conta"> <p class="text-center">Conta</p> </a>
+                </div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="row infos">
+                    <h2>Bem vindo! Acesse sua conta ou cadastre-se!</h2>
+                    <h5>Para proceder com o checkout, escolha uma das opções abaixo</h5>
+            </div>
+           
+            <div class="row buttonrow">
+                <button class="btn btn-black" type="button" v-on:click="detalheProduto(produto.id)" >Acessar Conta</button>
+                <button class="btn btn-black" type="button" v-on:click="novaConta()" >Criar Conta Nova</button>
+            </div>
+
+            
+        </template>
+    </div>
+
+
+</body>
+<script src="{% static 'front/js/conta.js' %}"></script>
+
+{% endblock %}

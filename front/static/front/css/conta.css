@@ -1,0 +1,41 @@
+.infos {
+    color:white;
+    margin-top: 25px;
+}
+
+.btn-black{
+    border-color: black;
+    background-color: rgb(255, 255, 255);
+    margin-top: 25px;
+    height: 50px;
+}
+.btn-black:hover{
+    background-color: rgb(240, 149, 210);
+    color: white;
+}
+
+.buttonrow{
+    margin-top:30%
+}
+
+.active {
+    background-color: rgb(240, 149, 210);
+}
+.active p{
+    color: white;
+}
+
+
+.main {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.info {
+	padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+	
+}
+
+.endereco{
+    margin:auto
+}
