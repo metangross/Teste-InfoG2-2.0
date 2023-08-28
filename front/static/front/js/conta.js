@@ -85,6 +85,18 @@ var v = new Vue({
         },
         fecharModal(){
             $("#exampleModal").modal("hide") 
+        },
+        logout(){
+            if(confirm("Deseja mesmo realizar o logout?")){
+                localStorage.removeItem("logado")
+                localStorage.removeItem("id")
+                localStorage.removeItem("nome_logado")
+                localStorage.removeItem("telefone")
+                alert("Logout realizado com sucesso!")
+                window.location.reload()
+
+            }
+
         }
     }
 })

@@ -10,7 +10,14 @@
         <template v-if="logado">
             <div class="row">
                 <div class="card main">
-                    <h1 class="card-header">Bem vindo de volta [[nome]]!</h5>
+                    <div class="row">
+                        <div class="col-md-10 card-header">
+                            <h1 class="">Bem vindo de volta [[nome]]! </h5>
+                        </div>
+                        <div class="col-md-2 card-header">
+                            <button class="btn btn-purple main" type="button" v-on:click="logout()" >Fazer Logout</button>
+                        </div>
+                    </div>
                   </div>
             </div>
             <div class="row">
@@ -162,7 +169,6 @@
         <template v-else>
             <div class="row infos">
                     <h2>Bem vindo! Acesse sua conta ou cadastre-se!</h2>
-                    <h5>Para proceder com o checkout, escolha uma das opções abaixo</h5>
             </div>
 
             <div class="row buttonrow">

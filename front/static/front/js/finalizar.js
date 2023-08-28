@@ -92,6 +92,8 @@ var v = new Vue({
         }).done(function(data){
             console.log(data)
             alert("Pedido feito com sucesso!")
+            localStorage.removeItem("ListaCarrinho")
+            localStorage.removeItem("InfoProdutos")
             window.location.href = "/conta"
         }).fail(function(xhr, status, error){
             console.log(xhr.responseText)
