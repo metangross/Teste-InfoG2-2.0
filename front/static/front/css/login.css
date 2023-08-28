@@ -1,0 +1,16 @@
+.entrada {
+    margin-bottom: 15px;
+}
+.btn-purple{
+    border-color: black;
+    margin-top: 15px;
+  }
+  .btn-purple:hover{
+    background-color: rgb(74, 48, 65);
+    color: white;
+  }
+
+  .main {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}

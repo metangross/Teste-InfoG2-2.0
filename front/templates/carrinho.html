@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/carrinho.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <div class="row">
+            <div class="card main">
+                <h1 class="card-header">Carrinho</h5>
+              </div>
+              <template v-if="!listaCarrinho.length">
+                <div class="card">
+                    <h5 class="card-header">Nenhum item no carrinho! Visite nossa loja para adicionar produtos ;)</h5>
+                  </div>
+              </template>
+              <template v-else>
+                <div class="card" v-for="produto in InfoProdutos">
+                    <h4 class="card-header">[[produto.descricao]]</h4>
+                    <div class="row ">
+                        <div class="col-md-3">
+                            <img :src="produto.imagem"  class="img-thumbnail thumb clickable" v-on:click="detalheProduto(produto.id)">
+                        </div>
+                        <div class="col-md-7 my-auto">
+                            <h5>Quantidade: [[getQuantidade(produto.id)]]</h5>
+                        </div>
+                        <div class="col-md-2" >
+                            <div class="svg-container" v-on:click="removeCarrinho(produto.id)">
+                                <img src="{% static 'front/src/trash.svg' %}" class="centered filter-red clickable" width="64" height="64">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="row card-header">
+                        <div class="col-md-6">
+                            <h5>
+                                Valor Total:
+                            </h5>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-end">R$ [[calcularValorTotal()]]</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="btn btn-checkout" type="button" v-on:click="checkout()">Prosseguir ao Checkout</button>
+              </template>
+        </div>
+
+
+
+        
+        
+
+        <div class="row bottom-bar fixed-bottom">
+            <div class="col-4 nopadding">
+                <a href="/"> <p class="text-center">Pagina Inicial</p> </a>
+            </div>
+            <div class="col-4 nopadding active">
+                <a href="#"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
+            </div>
+            <div class="col-4 nopadding">
+                <a href="/conta"> <p class="text-center">Conta</p> </a>
+            </div>
+        </div>
+
+
+</body>
+<script src="{% static 'front/js/carrinho.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/carrinho.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <div class="row">
+            <div class="card main">
+                <h1 class="card-header">Finalizar Compra</h5>
+            </div>
+            <div class="card categoria">
+                <h5 class="card-header">Produtos</h5>
+            </div>
+            <div class="card categoria" v-for="produto in InfoProdutos">
+                <h4 class="card-header">[[produto.descricao]]</h4>
+                <div class="row ">
+                    <div class="col-md-3">
+                        <img :src="produto.imagem"  class="img-thumbnail thumb">
+                    </div>
+                    <div class="col-md-7 my-auto">
+                        <h5>Quantidade: [[getQuantidade(produto.id)]]</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card categoria">
+                <div class="row card-header">
+                    <div class="col-md-6">
+                        <h5>
+                            Valor Total:
+                        </h5>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-end">R$ [[calcularValorTotal()]]</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card categoria">
+                <div class="row card-header">
+                    <div class="col-md-6">
+                        <h5>
+                            Informações de Delivery:
+                        </h5>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-end">[[endereco]]</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card categoria">
+                <div class="row card-header">
+                    <div class="col-md-6">
+                        <h5>
+                            Forma de Pagamento:
+                        </h5>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-end">[[formapagamento]]</p>
+                    </div>
+                </div>
+                
+            </div>
+            <button class="btn btn-checkout" type="button" v-on:click="finalizar()">Finalizar</button>
+
+        </div>
+
+
+
+
+</body>
+<script src="{% static 'front/js/finalizar.js' %}"></script>
+
+{% endblock %}

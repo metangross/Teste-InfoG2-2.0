@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/novaconta.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <div class="row">
+            <div class="card main">
+                <h2 class="card-header">Passo 1: Informações Pessoais e de Acesso</h5>
+                <div class="card-body">
+                    <form v-on:submit.prevent="continuar()">
+                        <div class="row entrada">
+                            <div class="col-md-1">
+                                <p>Nome</p>
+                            </div>
+                            <div class="col-md-11">
+                                <input class="form-control" v-model="nome" v-on:change="teste()" required>
+                            </div>
+                        </div>
+                        <div class="row entrada">
+                            <div class="col-md-2">
+                                <p>Data de Nascimento</p>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="datepicker" required>
+                            </div>
+                        </div>
+                        <div class="row entrada">
+                            <div class="col-md-1">
+                                <p>Telefone</p>
+                            </div>
+                            <div class="col-md-11">
+                                <input class="form-control" id="tele" v-on:change="changeUser()" name="fone" required>
+                            </div>
+                        </div>
+                        <div class="row entrada">
+                            <div class="col-md-2">
+                                <p>CPF/CNPJ</p>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" pattern="\d*" maxlength="14" v-model="cpfcnpj" name="cpfcnpj" required>
+                            </div>
+                        </div>
+                        <div class="row entrada">
+                            <div class="col-md-1">
+                                <p>Usuário</p>
+                            </div>
+                            <div class="col-md-11">
+                                <input class="form-control" v-model="usuario" disabled>
+                            </div>
+                        </div>
+                        <div class="row entrada">
+                            <div class="col-md-1">
+                                <p>Senha</p>
+                            </div>
+                            <div class="col-md-11">
+                                <input class="form-control" type="password" v-model="senha" minlength="8" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-purple" type="button submit"  >Continuar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <template v-if="novasinfo">
+                <div class="card endereco">
+                    <h2 class="card-header">Passo 2: Informações de Endereço</h5>
+                    <div class="card-body">
+                        <form v-on:submit.prevent="criarConta()">
+
+                            <div class="row entrada">
+                                <div class="col-md-1">
+                                    <p>CEP</p>
+                                </div>
+                                <div class="col-md-11">
+                                    <input class="form-control" v-model="cep" v-on:change="teste()" required>
+                                </div>
+                            </div>
+                            <div class="row entrada">
+                                <div class="col-md-1">
+                                    <p>Bairro</p>
+                                </div>
+                                <div class="col-md-11">
+                                    <input class="form-control" v-model="bairro" required>
+                                </div>
+                            </div>
+                            <div class="row entrada">
+                                <div class="col-md-1">
+                                    <p>Rua</p>
+                                </div>
+                                <div class="col-md-11">
+                                    <input class="form-control" v-model="rua" required>
+                                </div>
+                            </div>
+                            <div class="row entrada">
+                                <div class="col-md-1">
+                                    <p>Número</p>
+                                </div>
+                                <div class="col-md-11">
+                                    <input class="form-control" type="number" v-model="numero" required>
+                                </div>
+                            </div>
+                            <div class="row entrada">
+                                <div class="col-md-2">
+                                    <p>Complemento</p>
+                                </div>
+                                <div class="col-md-10">
+                                    <input class="form-control" v-model="complemento">
+                                </div>
+                            </div>
+                            <div class="row entrada">
+                                <div class="col-md-1">
+                                    <p>Cidade</p>
+                                </div>
+                                <div class="col-md-11">
+                                    <input class="form-control" v-model="cidade" required>
+                                </div>
+                            </div>
+                            <div class="row entrada">
+                                <div class="col-md-1">
+                                    <p>UF</p>
+                                </div>
+                                <div class="col-md-11">
+                                    <input class="form-control" v-model="estado" maxlength="2" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-purple" type="button submit"  >Criar Conta</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+
+</body>
+<script src="{% static 'front/js/novaconta.js' %}"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+{% endblock %}

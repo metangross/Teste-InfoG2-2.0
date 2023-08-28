@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/conta.css' %}">
+
+<body>
+
+    <div class="container" id="index">
+        <template v-if="logado">
+            <div class="row">
+                <div class="card main">
+                    <div class="row">
+                        <div class="col-md-10 card-header">
+                            <h1 class="">Bem vindo de volta [[nome]]! </h5>
+                        </div>
+                        <div class="col-md-2 card-header">
+                            <button class="btn btn-purple main" type="button" v-on:click="logout()" >Fazer Logout</button>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <h3 class="card-header">Endereço</h4>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>CEP</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p>[[cep]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Cidade</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[cidade]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>UF</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[uf]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Rua</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[rua]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Bairro</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p>[[bairro]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Número</h5>
+                        </div>
+                        <div class="col-md-10 border rounded">
+                            <p class="endereco">[[numero]]</p>
+                        </div>
+                    </div>
+                    <div class="row info">
+                        <div class="col-md-2">
+                            <h5>Complemento</h5>
+                        </div>
+                        <template v-if="complemento">
+                            <div class="col-md-10 border rounded">
+                                <p class="endereco">[[complemento]]</p>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="col-md-10 border rounded">
+                                <p class="endereco" >Nenhum complemento</p>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card main ">
+                    <h3 class="card-header">Meus Pedidos</h4>
+                </div>
+            </div>
+            <div class="row mgbt">
+                <div class="card main" v-for="pedido in pedidos">
+                    <h4 class="card-header">Pedido #[[pedido.id]]</h4>
+                    <div class="row ">
+                        <div class="col-md-10 my-auto">
+                            <div class="row info">
+                                <h5>Valor Total: R$[[pedido.total_price]]</h5>
+                            </div>
+                            <div class="row info">
+                                <h5>Status do Pedido: [[converteStatus(pedido.status)]]</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-purple main" type="button" v-on:click="exibirDetalhes(pedido.id)" >Exibir Detalhes</button>
+                </div>
+                
+
+                  
+                  <!-- Modal -->
+                  <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Pedido [[modal.pedido_id]]</h5>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-8">
+                                <p>Item</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Quantidade</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p>Preço</p>
+                            </div>
+                          </div>
+                          <template v-for="item in modal.items">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>[[item.description]]</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>[[item.quantity]]</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>R$[[(parseFloat(item.unit_price)*item.quantity).toFixed(2)]]</p>
+                                </div>
+                            </div>
+
+                          </template>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="fecharModal()">Fechar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="row bottom-bar fixed-bottom">
+                <div class="col-4 nopadding">
+                    <a href="/"> <p class="text-center">Pagina Inicial</p> </a>
+                </div>
+                <div class="col-4 nopadding">
+                    <a href="/carrinho"> <p class="text-center">Carrinho([[listaCarrinho.length]])</p> </a>
+                </div>
+                <div class="col-4 nopadding active">
+                    <a href="/conta"> <p class="text-center">Conta</p> </a>
+                </div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="row infos">
+                    <h2>Bem vindo! Acesse sua conta ou cadastre-se!</h2>
+            </div>
+
+            <div class="row buttonrow">
+                <button class="btn btn-black" type="button" v-on:click="logarConta()" >Acessar Conta</button>
+                <button class="btn btn-black" type="button" v-on:click="novaConta()" >Criar Conta Nova</button>
+            </div>
+
+            
+        </template>
+    </div>
+
+
+</body>
+<script src="{% static 'front/js/base/bootstrap.js' %}"></script>
+<script src="{% static 'front/js/conta.js' %}"></script>
+{% endblock %}

@@ -1,9 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
-<body>
-    <div class="container">
+{% load static %}
+<link rel="stylesheet" href="{% static 'front/css/index.css' %}">
 
+<body>
+    <div class="container" id="index">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <a href="/"> <img src="{% static 'front/src/luestilo.png' %}" alt="Lu Estilo" class="img-fluid mx-auto my-auto d-block w-75 rounded" > </a>
+                <!-- HTML !-->
+                <div class="card">
+                    <div class="card-body">
+                      <h3>Bem vindo! Selecione qual loja você deseja acessar</h3>
+                    </div>
+                  </div>
+                <template v-for="loja in lojas">
+                    <div class="card" href="/">
+                        <h5 class="card-header">[[loja.name]]</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-9">
+                                    <p class="card-text">[[loja.street]], [[loja.number]]</p>
+                                </div>
+                                <div class="col-3">
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-purple" type="button" @click="selecionarloja(loja.slug)">></button>
+                                      </div>             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </template>
+               
+
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
     </div>
 </body>
+<script src="{% static 'front/js/index.js' %}"></script>
 
 {% endblock %}
