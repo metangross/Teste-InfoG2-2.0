@@ -22,4 +22,8 @@ This command will download the images and build the services required to run the
 
 ``` docker-compose up ```
 
-And then the website will work properly.
+And then the website will work properly. The website can be opened by going to the url http://0.0.0.0:8080/
+
+## Screen
+
+You can see the screens and a fluxogram of how the website works on this website: https://www.figma.com/file/qxRT00jDoNCkLlnNanbX5N/Untitled?type=design&node-id=0-1&mode=design&t=i4gQPbByRT44J5kf-0
